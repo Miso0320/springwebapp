@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 /*import org.springframework.web.bind.annotation.RestController;*/
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.springwebapp.dto.Ch02Dto;
 import com.mycompany.springwebapp.dto.Ch02FileInfo;
@@ -31,11 +32,18 @@ import lombok.extern.slf4j.Slf4j;
 /*@RestController*/
 @RequestMapping("/ch02")
 public class Ch02Controller {
-	
 	@RequestMapping("/content")
-	public String content() {
+	public String content(HttpServletRequest request) {
 		return "ch02/content";
 	}
+	
+	/*@RequestMapping("/content")
+	public ModelAndView content() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("ch02/content");
+		// mav.addObject("data", "홍길동");
+		return mav;
+	}*/
 	
 	//@GetMapping("/method")
 	@RequestMapping(value="/method", method=RequestMethod.GET)
