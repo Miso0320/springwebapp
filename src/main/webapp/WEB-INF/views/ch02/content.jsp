@@ -199,9 +199,7 @@
 		<div class="card m-2">
 			<div class="card-header">Filter & Interceptor</div>
 			<div class="card-body">
-				<a
-					href="${pageContext.request.contextPath}/ch02/filterAndInterceptor"
-					class="btn btn-info btn-sm">Filter & Interceptor</a>
+				<a href="${pageContext.request.contextPath}/ch02/filterAndInterceptor" class="btn btn-info btn-sm">Filter & Interceptor</a>
 			</div>
 		</div>
 	</div>

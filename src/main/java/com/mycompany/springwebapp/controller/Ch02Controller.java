@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.springwebapp.dto.Ch02Dto;
 import com.mycompany.springwebapp.dto.Ch02FileInfo;
+import com.mycompany.springwebapp.interceptor.Auth;
+import com.mycompany.springwebapp.interceptor.Auth.Role;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -141,5 +143,12 @@ public class Ch02Controller {
 		Ch02FileInfo fileInfo = new Ch02FileInfo();
 		fileInfo.setFileName("photo7.jpg");
 		return fileInfo;
+	}
+	
+	@RequestMapping("/filterAndInterceptor")
+	@Auth(Role.ADMIN)
+	public String adminMethod() {
+		log.info("실행");
+		return "ch02/adminPage";
 	}
 }
