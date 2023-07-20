@@ -1,7 +1,13 @@
 package com.mycompany.springwebapp.controller;
 
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
@@ -144,6 +150,39 @@ public class Ch02Controller {
 		fileInfo.setFileName("photo7.jpg");
 		return fileInfo;
 	}
+	
+	@GetMapping("/fileDownload")
+	public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String fileName = "photo1.jpg";
+		String filePath = "/resources/images/photo/" + fileName;
+		filePath = request.getServletContext().getRealPath(filePath);
+		log.info("filePath : " + filePath);	
+		
+		// 응답 헤드에 Content-Type 추가
+		String mimeType = request.getServletContext().getMimeType(filePath);
+		response.setContentType(mimeType);	//image/jpeg, image/png
+		
+		// 응답 헤드에 한글 이름의 파일명을 ISO-8859-1 문자셋으로 인코딩해서 추가
+		String userAgent = request.getHeader("User-Agent");
+		if(userAgent.contains("Trident") || userAgent.contains("MSIE")) {
+			// IE
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+			log.info("IE : " + fileName);
+			
+		} else {
+			// Chrome, Edge, FireFox, Safari
+			fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+			log.info("Chrome : " + filePath);
+		}
+		
+		// 응답 본문에 파일 데이터 싣기
+		OutputStream os = response.getOutputStream();	// 바이너리 데이터
+		Path path = Paths.get(filePath);
+		Files.copy(path, os);
+		os.flush();
+		os.close();
+	}
+	
 	
 	@RequestMapping("/filterAndInterceptor")
 	@Auth(Role.ADMIN)
