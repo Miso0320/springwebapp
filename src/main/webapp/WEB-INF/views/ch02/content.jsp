@@ -105,7 +105,7 @@
                   url:"method",
                   method: "PUT",
                   contentType: "application/json; charset=UTF-8",
-                  data: JSON.stringify({bkind:"free", bno:5}),
+                  data: JSON.stringify({bkind:"자유게시판", bno:5}),
                   //data: {bkind:"free", bno:5},
                   success: function(data) {
                 	  console.log(data);

@@ -2,12 +2,10 @@ package com.mycompany.springwebapp.controller;
 
 import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /*import org.springframework.web.bind.annotation.RestController;*/
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.springwebapp.dto.Ch02Dto;
 import com.mycompany.springwebapp.dto.Ch02FileInfo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +45,7 @@ public class Ch02Controller {
 		return "ch02/content";
 	}
 	
-	//@PutMapping("/method")
+	/*//@PutMapping("/method")
 	@RequestMapping(value="/method", method=RequestMethod.PUT)
 	public void method3(@RequestBody String json, HttpServletResponse response) throws Exception {
 		JSONObject jsonObject = new JSONObject(json);
@@ -65,7 +64,24 @@ public class Ch02Controller {
 		pw.flush();
 		pw.close();
 		
-		/*return "ch02/content";*/
+	}*/
+	
+	//@PutMapping("/method")
+	@RequestMapping(value="/method", method=RequestMethod.PUT)
+	public void method3(@RequestBody Ch02Dto dto, HttpServletResponse response) throws Exception {
+		log.info("bkind : " + dto.getBkind());
+		log.info("bno : " + dto.getBno());
+		
+		JSONObject root = new JSONObject();
+		root.put("result", "success");
+		String responseJson = root.toString();	//{"result":"success"}
+		
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		pw.print(responseJson);
+		pw.flush();
+		pw.close();
+		
 	}
 	
 	//@DeleteMapping("/method")
