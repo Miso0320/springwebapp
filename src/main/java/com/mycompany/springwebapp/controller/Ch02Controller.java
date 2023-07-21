@@ -191,7 +191,6 @@ public class Ch02Controller {
 		os.close();
 	}
 	
-	
 	@RequestMapping("/filterAndInterceptor")
 	@Auth(Role.ADMIN)
 	public String adminMethod() {
