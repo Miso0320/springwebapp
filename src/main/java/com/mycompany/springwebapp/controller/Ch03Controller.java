@@ -96,7 +96,7 @@ public class Ch03Controller {
 		pw.close();
 	}
 	
-	@RequestMapping("/methcod5")
+	@RequestMapping("/method5")
 	public void method5(@RequestBody Ch03Dto dto, HttpServletResponse reponse) throws Exception{
 		log.info("param1 : " + dto.getParam1());
 		log.info("param2 : " + dto.getParam2());
@@ -114,5 +114,4 @@ public class Ch03Controller {
 		pw.flush();
 		pw.close();
 	}
-	
 }

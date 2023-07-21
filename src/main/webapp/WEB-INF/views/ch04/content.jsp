@@ -12,7 +12,7 @@
    <div class="card-body">
    	      <div class="card m-2">
          <div class="card-header">
-            POST 방식으로 요청
+			실습1
          </div>
          <div class="card-body">
             <form id="form1" method="post" action="method1">
@@ -26,13 +26,13 @@
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param2</span></div>
-                  <input type="text" name="param2" class="form-control" value="${ch04Form1.param1}" >
+                  <input type="text" name="param2" class="form-control" value="${ch04Form1.param2}" >
                   <!-- <span class="param2-error text-danger"></span> -->
                   <form:errors path="ch04Form1.param2" cssClass="param2-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param3</span></div>
-                  <input type="text" name="param3" class="form-control" value="${ch04Form1.param1}">
+                  <input type="text" name="param3" class="form-control" value="${ch04Form1.param3}">
                   <!-- <span class="param3-error text-danger"></span> -->
                   <form:errors path="ch04Form1.param3" cssClass="param3-error text-danger"/>
                </div>
@@ -40,11 +40,11 @@
                   <div class="input-group-prepend"><span class="input-group-text">param4</span></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                      <label class="btn btn-secondary active">
-                      <input type="radio" name="param4" <c:if test="${ch04Form.param4}">checked</c:if> value="true"> true
+                      <input type="radio" name="param4" <c:if test="${ch04Form1.param4}">checked</c:if> value="true"> true
                        <!-- <input type="radio" name="param4" value="true"> true -->
                      </label>
                      <label class="btn btn-secondary">
-                      <input type="radio" name="param4" <c:if test="${ch04Form.param4}">checked</c:if> value="false"> false
+                      <input type="radio" name="param4" <c:if test="${ch04Form1.param4}">checked</c:if> value="false"> false
                       <!--  <input type="radio" name="param4" value="false"> false -->
                      </label>
                   </div>
@@ -136,44 +136,42 @@
    
       <div class="card m-2">
          <div class="card-header">
-            AJAX로 요청
+            	실습2
          </div>
          <div class="card-body">
-            <form id="form2" name="form2">
+            <form id="form2" name="form2" method="post" action="method2">
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param1</span></div>
-                  <input type="text" id="param1" name="param1" class="form-control">
-                  <span class="param1-error text-danger"></span>
+                  <input type="text" id="param1" name="param1" class="form-control" value="${ch04Form2.param1}">
+                  <form:errors path="ch04Form2.param1" cssClass="param1-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param2</span></div>
-                  <input type="text" id="param2" name="param2" class="form-control">
-                  <span class="param2-error text-danger"></span>
+                  <input type="text" id="param2" name="param2" class="form-control" value="${ch04Form2.param2}">
+                  <form:errors path="ch04Form2.param2" cssClass="param2-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param3</span></div>
-                  <input type="text" id="param3" name="param3" class="form-control">
-                  <span class="param3-error text-danger"></span>
+                  <input type="text" id="param3" name="param3" class="form-control" value="${ch04Form2.param3}">
+                  <form:errors path="ch04Form2.param3" cssClass="param3-error text-danger"/>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param4</span></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                      <label class="btn btn-secondary active">
-                       <input type="radio" id="radio1" name="param4" checked value="true"> true
+                       <input type="radio" id="radio1" name="param4" <c:if test="${ch04Form2.param4}">checked</c:if> value="true"> true
                      </label>
                      <label class="btn btn-secondary">
-                       <input type="radio" id="radio2" name="param4" value="false"> false
+                       <input type="radio" id="radio2" name="param4" <c:if test="${ch04Form2.param4}">checked</c:if> value="false"> false
                      </label>
                   </div>
                </div>
                <div class="input-group">
                   <div class="input-group-prepend"><span class="input-group-text">param5</span></div>
-                  <input type="date" id="param5" name="param5" class="form-control" value="2030-12-05">
+                  <input type="date" id="param5" name="param5" class="form-control" value='<fmt:formatDate value="${ch04Form2.param5}" pattern="yyyy-MM-dd"/>'>
                </div>
+               <button class="btn btn-info btn-sm">POST 방식 요청</button>
             </form>
-            <div class="mt-2">
-               <button class="btn btn-info btn-sm" onclick="requestPost()">POST 방식 요청</button>
-            </div>
          </div>
          <script>
             function requestPost() {
@@ -203,15 +201,17 @@
                   $.ajax({
                      url:"method2",
                      method:"post",
-                     data: {
+                     contentType: "application/json; charset=UTF-8",
+                     data: JSON.stringify({
                         param1: param1, 
-                        param2, 
-                        param3, 
-                        param4, 
-                        param5
-                     },
+                        param2: param2, 
+                        param3: param3, 
+                        param4: param4, 
+                        param5: param5
+                     }),
                      success: function(data) {
-                    	 
+                    	 //{result: "success"}
+                    	 //{result: "fail"}
                      }
                   });
                }
@@ -232,23 +232,23 @@
                   <form id="form3" method="post" action="join">
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
-                        <input type="text" name="mid" class="form-control" value="${joinForm.mid}" autocomplete="username">
-                        <form:errors cssClass="text-danger" path="joinForm.mid"/>
+                        <input type="text" name="mid" class="form-control" value="${ch04Form3.mid}" autocomplete="username">
+                        <form:errors cssClass="text-danger" path="ch04Form3.mid"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
-                        <input type="password" name="mpassword" class="form-control" value="${joinForm.mpassword}" autocomplete="current-password">
-                        <form:errors cssClass="text-danger" path="joinForm.mpassword"/>
+                        <input type="password" name="mpassword" class="form-control" value="${ch04Form3.mpassword}" autocomplete="current-password">
+                        <form:errors cssClass="text-danger" path="ch04Form3.mpassword"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">memail</span></div>
-                        <input type="text" name="memail" class="form-control" value="${joinForm.memail}">
-                        <form:errors cssClass="text-danger" path="joinForm.memail"/>
+                        <input type="text" name="memail" class="form-control" value="${ch04Form3.memail}">
+                        <form:errors cssClass="text-danger" path="ch04Form3.memail"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mtel</span></div>
-                        <input type="text" name="mtel" class="form-control" value="${joinForm.mtel}">
-                        <form:errors cssClass="text-danger" path="joinForm.mtel"/>
+                        <input type="text" name="mtel" class="form-control" value="${ch04Form3.mtel}">
+                        <form:errors cssClass="text-danger" path="ch04Form3.mtel"/>
                      </div>
                      <input class="btn btn-info" type="submit" value="가입"/>
                   </form>
@@ -263,13 +263,13 @@
                   <form id="form4" method="post" action="login">
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
-                        <input type="text" name="mid" class="form-control" value="${loginForm.mid}">
-                        <form:errors cssClass="text-danger" path="loginForm.mid"/>
+                        <input type="text" name="mid" class="form-control" value="${ch04Form4.mid}">
+                        <form:errors cssClass="text-danger" path="ch04Form4.mid"/>
                      </div>
                      <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
-                        <input type="password" name="mpassword" class="form-control" value="${loginForm.mpassword}">
-                        <form:errors cssClass="text-danger" path="loginForm.mpassword"/>
+                        <input type="password" name="mpassword" class="form-control" value="${ch04Form4.mpassword}">
+                        <form:errors cssClass="text-danger" path="ch04Form4.mpassword"/>
                      </div>
                      <input class="btn btn-info" type="submit" value="로그인"/>
                   </form>
@@ -277,7 +277,6 @@
             </div>
          </div>
       </div>
-   
    </div>
 </div>
 

@@ -40,20 +40,19 @@ public class Ch04Form1Validator implements Validator {
 	      if(param2 == null || param2.equals("")) {
 	         errors.rejectValue("param2", "errors.form.required", "필수 입력(D)");
 	      } else {
-	         String regExp = "(010|011)-[0-9]{3,4}-[0-9]{4}";
+	         String regExp = "^(010|011)-[0-9]{3,4}-[0-9]{4}$";
 	         boolean result = Pattern.matches(regExp, param2);
 	         if(result == false) {
 	            errors.rejectValue("param2", "errors.form.format", "전화번호 형식에 맞지 않음(D)");
 	         }
 	      }
-
 		
 		// param3 검사
 	      String param3 = ch04Form1.getParam3();
 	      if(param3 == null || param3.equals("")) {
 	          errors.rejectValue("param3", "errors.form.required", "필수 입력(D)");
 	       } else {
-	          String regExp = "([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)";
+	          String regExp = "^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$";
 	          boolean result = Pattern.matches(regExp, param3);
 	          if(result == false) {
 	             errors.rejectValue("param3", "errors.form.format", "이메일 형식에 맞지 않음(D)");

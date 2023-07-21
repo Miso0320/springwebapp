@@ -1,17 +1,23 @@
 package com.mycompany.springwebapp.controller;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mycompany.springwebapp.dto.*;
-import com.mycompany.springwebapp.validator.Ch04Form1Validator;
+import com.mycompany.springwebapp.validator.*;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,4 +54,59 @@ public class Ch04Controller {
 		return "redirect:/";
 	}
 	
+	@InitBinder("ch04Form2")
+	public void Ch04Form2Validator(WebDataBinder binder) {
+		binder.setValidator(new Ch04Form2Validator());
+	}
+	
+	@PostMapping("/method2")
+	public String method2(@Valid Ch04Form2 dto, Errors errors) {
+		if(errors.hasErrors()) {
+			return "ch04/content";
+		}
+		
+		// 요청 처리 코드
+		log.info("param1 : " + dto.getParam1());
+		log.info("param2 : " + dto.getParam2());
+		log.info("param3 : " + dto.getParam3());
+		log.info("param4 : " + dto.isParam4());
+		log.info("param5 : " + dto.getParam5());
+		return "redirect:/";
+	}
+	
+	@InitBinder("ch04Form3")
+	public void Ch04Form3Validator(WebDataBinder binder) {
+		binder.setValidator(new Ch04Form3Validator());
+	}
+	
+	@PostMapping("/join")
+	public String join(@Valid Ch04Form3 dto, Errors errors) {
+		if(errors.hasErrors()) {
+			return "ch04/content";
+		}
+		
+		// 요청 처리 코드
+		log.info("mid : " + dto.getMid());
+		log.info("mpassword : " + dto.getMpassword());
+		log.info("memail : " + dto.getMemail());
+		log.info("mtel : " + dto.getMtel());
+		return "redirect:/";
+	}
+	
+	@InitBinder("ch04Form4")
+	public void Ch04Form4Validator(WebDataBinder binder) {
+		binder.setValidator(new Ch04Form4Validator());
+	}
+	
+	@PostMapping("/login")
+	public String login(@Valid Ch04Form4 dto, Errors errors) throws Exception {
+		if(errors.hasErrors()) {
+			return "ch04/content";
+		}
+		
+		// 요청 처리 코드
+		log.info("mid : " + dto.getMid());
+		log.info("mpassword : " + dto.getMpassword());
+		return "redirect:/";
+	}
 }
