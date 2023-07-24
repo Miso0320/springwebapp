@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp"%>
 
-<div class="card m-2">
-	<div class="card-header">Forward와 Redirect</div>
-	<div class="card-body">
-		<div class="m-2">
-			<a href="forward" class="btn btn-danger btn-sm">Forward</a>
-		</div>
-		
-		<div class="m-2">
-			<a href="redirect" class="btn btn-danger btn-sm">Redirect</a>
-		</div>
-	</div>
+<div class="card m-1">
+   <div class="card-header">Forward와 Redirect</div>
+   <div class="card-body">
+      <div class="m-2">
+         <a href="forward" class="btn btn-primary btn-sm">Forward</a>
+      </div>
+      
+      <div class="m-2">
+         <a href="redirect" class="btn btn-warning btn-sm">Redirect</a>
+      </div>
+   </div>
 </div>
 
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
+
+<%@ include file="/WEB-INF/views/common/footer.jsp"%>
