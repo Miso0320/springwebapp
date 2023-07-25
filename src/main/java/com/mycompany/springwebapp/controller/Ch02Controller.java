@@ -183,6 +183,8 @@ public class Ch02Controller {
 			log.info("Chrome : " + filePath);
 		}
 		
+		response.setHeader("Content-Disposition", "attachment; filename=\""+fileName+"\"");
+		
 		// 응답 본문에 파일 데이터 싣기
 		OutputStream os = response.getOutputStream();	// 바이너리 데이터
 		Path path = Paths.get(filePath);

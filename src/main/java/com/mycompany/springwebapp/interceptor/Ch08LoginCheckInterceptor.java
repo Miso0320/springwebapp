@@ -6,10 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.springwebapp.dto.Ch08Member;
-import com.mycompany.springwebapp.interceptor.Auth.Role;
 
 import lombok.extern.slf4j.Slf4j;
 

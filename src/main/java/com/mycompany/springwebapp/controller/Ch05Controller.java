@@ -46,7 +46,7 @@ public class Ch05Controller {
 		cookie.setMaxAge(30*60);
 		// true : 서버만 이용
 		// false : JavaScript에서 접근 허용
-		cookie.setHttpOnly(true);
+		cookie.setHttpOnly(false);
 		// false : http, https 모두 사용
 		// true : https만 사용
 		cookie.setSecure(false);
