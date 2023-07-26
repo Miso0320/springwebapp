@@ -92,104 +92,55 @@
 			}
 			
 			/* C11 content */
- 			.custom-btn {
+			.button_container {
+			  
+			}
+			.btn_move {
+			  text-decoration: none;
+			  width: 200px;
+			  border: none;
+			  display: block;
 			  text-align: center;
-			  width: 70px;
-			  height: 40px;
-			  color: #fff;
-			  border-radius: 5px;
-			  padding: 10px 25px;
-			  font-family: 'Lato', sans-serif;
-			  font-weight: 500;
-			  background: transparent;
 			  cursor: pointer;
-			  transition: all 0.3s ease;
-			  position: relative;
-			  display: inline-block;
-			   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-			   7px 7px 20px 0px rgba(0,0,0,.1),
-			   4px 4px 5px 0px rgba(0,0,0,.1);
+			  text-transform: uppercase;
 			  outline: none;
+			  overflow: hidden;
+			  position: relative;
+			  color: #fff;
+			  font-weight: 700;
+			  font-size: 15px;
+			  background-color: #222;
+			  padding: 17px 60px;
+			  margin: 0 auto;
+			  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 			}
 			
-			.btn-6 {
-			  background: rgb(247,150,192);
-			  background: radial-gradient(circle, rgba(247,150,192,1) 0%, rgba(118,174,241,1) 100%);
-			  line-height: 42px;
-			  padding: 0;
-			  border: none;
+			.btn_move span {
+			  position: relative; 
+			  z-index: 1;
 			}
-			.btn-6 span {
-			  position: relative;
-			  display: block;
-			  width: 100%;
-			  height: 100%;
-			}
-			.btn-6:before,
-			.btn-6:after {
-			  position: absolute;
+			
+			.btn_move:after {
+			  color: #fff;
 			  content: "";
-			  height: 0%;
-			  width: 1px;
-			 box-shadow:
-			   -1px -1px 20px 0px rgba(255,255,255,1),
-			   -4px -4px 5px 0px rgba(255,255,255,1),
-			   7px 7px 20px 0px rgba(0,0,0,.4),
-			   4px 4px 5px 0px rgba(0,0,0,.3);
-			}
-			.btn-6:before {
-			  right: 0;
-			  top: 0;
-			  transition: all 500ms ease;
-			}
-			.btn-6:after {
-			  left: 0;
-			  bottom: 0;
-			  transition: all 500ms ease;
-			}
-			.btn-6:hover{
-			  background: transparent;
-			  color: #76aef1;
-			  box-shadow: none;
-			}
-			.btn-6:hover:before {
-			  transition: all 500ms ease;
-			  height: 100%;
-			}
-			.btn-6:hover:after {
-			  transition: all 500ms ease;
-			  height: 100%;
-			}
-			.btn-6 span:before,
-			.btn-6 span:after {
 			  position: absolute;
-			  content: "";
-			  box-shadow:
-			   -1px -1px 20px 0px rgba(255,255,255,1),
-			   -4px -4px 5px 0px rgba(255,255,255,1),
-			   7px 7px 20px 0px rgba(0,0,0,.4),
-			   4px 4px 5px 0px rgba(0,0,0,.3);
-			}
-			.btn-6 span:before {
 			  left: 0;
 			  top: 0;
-			  width: 0%;
-			  height: .5px;
-			  transition: all 500ms ease;
+			  height: 490%;
+			  width: 140%;
+			  background: #78c7d2;
+			  -webkit-transition: all .5s ease-in-out;
+			  transition: all .5s ease-in-out;
+			  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+			  transform: translateX(-98%) translateY(-25%) rotate(45deg);
 			}
-			.btn-6 span:after {
-			  right: 0;
-			  bottom: 0;
-			  width: 0%;
-			  height: .5px;
-			  transition: all 500ms ease;
+			
+			.btn_move:hover:after {
+			  color: #fff;
+			  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+			  transform: translateX(-9%) translateY(-25%) rotate(45deg);
 			}
-			.btn-6 span:hover:before {
-			  width: 100%;
-			}
-			.btn-6 span:hover:after {
-			  width: 100%;
-			}
+			
 			
 		</style>
 	
