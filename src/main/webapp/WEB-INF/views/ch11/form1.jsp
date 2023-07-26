@@ -4,6 +4,7 @@
 
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
+
 <div class="card m-2">
 	<div class="card-header">스프링 태그 라이브러리</div>
 	<div class="card-body">
@@ -21,7 +22,7 @@
 				<form:password path="mpassword" class="form-control"/>
 			</div>
 			<form:hidden path="mnation"/>
-			<button class="btn btn-warning btn-sm">Submit</button>
+			<button class="btn-hover color-3">Submit</button>
 		</form:form>
 	</div>
 </div>
