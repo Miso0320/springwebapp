@@ -1,5 +1,6 @@
 package com.mycompany.springwebapp.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.springwebapp.service.Ch12ServiceDiByAnnotaion;
 import com.mycompany.springwebapp.service.Ch12ServiceDiByXml;
+import com.mycompany.springwebapp.service.Ch12ServicePropertyDi;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,6 +24,9 @@ public class Ch12Controller {
 	@Autowired
 	private Ch12ServiceDiByAnnotaion serviceDiByAnnotaion;
 	
+	@Resource
+	private Ch12ServicePropertyDi servicePropertyDi;
+	
 	/*@Resource(name="name1")
 	private Ch12ServiceCreateByXml service1;*/
 	
@@ -32,6 +37,7 @@ public class Ch12Controller {
 		
 		serviceByXml.method();
 		serviceDiByAnnotaion.method();
+		servicePropertyDi.method();
 		
 		return "ch12/content";
 	}
