@@ -2,6 +2,14 @@
     pageEncoding="UTF-8"%>
 
 <ul class="nav flex-column">
+	   <li class="nav-item mb-2">
+	      <h6 class="text-white">
+	         <span class="mr-2">Bonus Stage</span>
+	         <a class="text-white" href="${pageContext.request.contextPath}/test">쫀득이</a>
+	      </h6>
+	   </li>
+
+
    <li class="nav-item mb-2">
       <h6 class="text-white">
          <span class="mr-2">Ch01.</span>
