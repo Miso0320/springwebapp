@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.springwebapp.dao.Ch12DaoByAnnotation1;
 import com.mycompany.springwebapp.dao.Ch12DaoByAnnotation2;
 import com.mycompany.springwebapp.dao.Ch12DaoByAnnotation3;
-import com.mycompany.springwebapp.dao.Ch12DaoI;
+import com.mycompany.springwebapp.dao.Ch12BoardDao2;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +24,7 @@ public class Ch12ServiceDiByAnnotaion {
 	
 	// @Resource(name="ch12DaoImpl2")
 	@Autowired @Qualifier("ch12DaoImpl1")
-	private Ch12DaoI ch12Dao;
+	private Ch12BoardDao2 ch12Dao;
 	
 	// 생성자
 	public Ch12ServiceDiByAnnotaion() {
