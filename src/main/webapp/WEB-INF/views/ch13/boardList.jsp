@@ -20,7 +20,7 @@
 			<c:forEach var="board" items="${boards}">
 				<tr>
 					<td>${board.bno}</td>
-					<td><a href="boardDetail?bno=${board.bno}">${board.btitle}</a></td>
+					<td><a href="detailBoard?bno=${board.bno}">${board.btitle}</a></td>
 					<td>${board.mid}</td>
 					<td><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
