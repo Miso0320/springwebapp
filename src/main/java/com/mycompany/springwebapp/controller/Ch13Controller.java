@@ -11,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.springwebapp.dto.Ch13Board;
 import com.mycompany.springwebapp.dto.Ch13Member;
 import com.mycompany.springwebapp.dto.Ch13Pager;
+import com.mycompany.springwebapp.interceptor.Login;
 import com.mycompany.springwebapp.service.Ch13BoardService;
 import com.mycompany.springwebapp.service.Ch13MemberService;
 import com.mycompany.springwebapp.service.Ch13MemberService.JoinResult;
@@ -39,35 +41,39 @@ public class Ch13Controller {
 	}	
 	
 	
-	@GetMapping("/insertBoard")
-	public String insertBoard() {
-		log.info("실행");
-
-			Ch13Board board = new Ch13Board();
-			board.setBtitle("살려줘");
-			board.setBcontent("고생한 만큼, 실력을 향상시켜서 연봉100억을 받을거야.");
-			board.setMid("user");
-			
-			//boardDaoOld.insert(board);
-			boardService.write(board);
-			
-			//실제로 저장된 bno
-			log.info("저장된 bno: " + board.getBno());
+	@GetMapping("/writeBoard")
+	public String writeBoardForm() {
+		return "ch13/writeBoardForm";
+	}
+	
+	@PostMapping("/writeBoard")
+	@Login
+	public String writeBoard(Ch13Board board, HttpSession session) {
+		Ch13Member member = (Ch13Member) session.getAttribute("ch13Login");
+		board.setMid(member.getMid());
+		boardService.write(board);
 		
-		return "redirect:/ch13/content";
+		// 실제로 저장된 bno
+		log.info("저장된 bno: " + board.getBno());
+		
+		return "redirect:/ch13/getBoardList";
 	}
 	
 	@GetMapping("/getBoardList")
-	public String getBoardList() {
+	public String getBoardList(@RequestParam(defaultValue="1") int pageNo, Model model) {
 		int totalBoardNum = boardService.getTotalBoardNum();
 		
-		Ch13Pager pager = new Ch13Pager(10, 5, totalBoardNum, 1);
+		Ch13Pager pager = new Ch13Pager(5, 5, totalBoardNum, pageNo);
 		
 		List<Ch13Board> list = boardService.getList(pager);
-		for(Ch13Board board : list) {
+		
+		model.addAttribute("pager", pager);
+		model.addAttribute("boards", list);
+		
+		/*for(Ch13Board board : list) {
 			log.info(board.toString());
-		}
-		return "redirect:/ch13/content";
+		}*/
+		return "ch13/boardList";
 	}
 	
 	@GetMapping("/updateBoard")
@@ -138,7 +144,7 @@ public class Ch13Controller {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("ch13login");
+		session.removeAttribute("ch13Login");
 		return "redirect:/ch13/content";
 		
 	}
