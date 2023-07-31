@@ -16,25 +16,20 @@
 		<div class="mt-2">
 			<a href="updateBoard" class="btn-hover color-3">게시물 변경하기</a>
 		</div>
-<!-- 		<div class="mt-2">
+ 		<div class="mt-2">
 			<a href="deleteBoard" class="btn-hover color-4">게시물 삭제하기</a>
-		</div> -->
-		
-		<div class="div">
-			<span class="button--bubble__container">
-				<a href="deleteBoard" class="button button--bubble">게시물 삭제하기</a>
-				<span class="button--bubble__effect-container">
-					<span class="circle top-left"></span>
-				    <span class="circle top-left"></span>
-				    <span class="circle top-left"></span>
-				
-				    <span class="button effect-button"></span>
-				
-				    <span class="circle bottom-right"></span>
-				    <span class="circle bottom-right"></span>
-				    <span class="circle bottom-right"></span>
-			 	</span>
-			</span>
+		</div>
+	</div>	
+</div>
+	
+<div class="card m-2">
+	<div class="card-header">회원서비스</div>
+	<div class="card-body">
+		<div class="mt-2">
+			<a href="join" class="btn btn-warning">회원가입</a>
+		</div>
+		<div class="mt-2">
+			<a href="login" class="btn btn-success">로그인</a>
 		</div>
 	</div>
 </div>

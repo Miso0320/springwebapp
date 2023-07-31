@@ -4,16 +4,19 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mycompany.springwebapp.dao.Ch13BoardDao;
-import com.mycompany.springwebapp.dao.Ch13BoardDaoOld;
 import com.mycompany.springwebapp.dto.Ch13Board;
+import com.mycompany.springwebapp.dto.Ch13Member;
 import com.mycompany.springwebapp.dto.Ch13Pager;
 import com.mycompany.springwebapp.service.Ch13BoardService;
+import com.mycompany.springwebapp.service.Ch13MemberService;
+import com.mycompany.springwebapp.service.Ch13MemberService.JoinResult;
+import com.mycompany.springwebapp.service.Ch13MemberService.LoginResult;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,6 +27,9 @@ public class Ch13Controller {
 	
 	@Resource
 	private Ch13BoardService boardService;
+	
+	@Resource
+	private Ch13MemberService memberService;
 
 	@RequestMapping("/content")
 	public String content() {
@@ -78,5 +84,48 @@ public class Ch13Controller {
 		boardService.remove(bno);
 		
 		return "redirect:/ch13/content";
+	}
+	
+	@GetMapping("/join")
+	public String joinFrom() {
+		return "ch13/joinForm";
+	}
+	
+	@PostMapping("/join")
+	public String join(Ch13Member member, Model model) {
+		JoinResult result = memberService.join(member);
+		
+		/*비즈니스 로직은 되도록 컨트롤러에서 처리하지 않음 */
+		if(result == JoinResult.FAIL_DUPLICATED_MID) {
+			String error = "중복된 MID가 존재합니다";
+			model.addAttribute("error", error);
+			return "ch13/joinForm";
+		} else {
+			memberService.join(member);
+			return "redirect:/ch13/content";
+		}
+	}
+	
+	@GetMapping("/login")
+	public String loginForm() {
+		return "ch13/loginForm";
+	}
+	
+	@PostMapping("/login")
+	public String login(Ch13Member member, Model model) {
+		LoginResult result = memberService.login(member);
+		String error = "";
+		if(result == LoginResult.FAIL_MID) {
+			error = "MID가 없습니다.";
+		} else if(result == LoginResult.FAIL_ENABLED) {
+			error = "MID가 비활성화 되어 있습니다.";
+		} else if(result == LoginResult.FAIL_MPASSWORD) {
+			error = "MPASSWORD가 틀립니다.";
+		} else {
+			return "redirect:/ch13/content";
+		}
+		
+		model.addAttribute("error", error);
+		return "ch13/loginForm";
 	}
 }

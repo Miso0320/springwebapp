@@ -15,8 +15,13 @@ public class Ch13MemberServiceImpl implements Ch13MemberService {
 	private Ch13MemberDao memberDao;
 	
 	@Override
-	public void join(Ch13Member member) {
+	public JoinResult join(Ch13Member member) {
+		Ch13Member dbMember = memberDao.selectByMid(member.getMid());
+		if(dbMember != null) {
+			return JoinResult.FAIL_DUPLICATED_MID;
+		}
 		memberDao.insert(member);
+		return JoinResult.SUCCESS;
 	}
 
 	@Override
