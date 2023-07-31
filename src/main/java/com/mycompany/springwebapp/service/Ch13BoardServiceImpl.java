@@ -61,7 +61,7 @@ public class Ch13BoardServiceImpl implements Ch13BoardService {
 	}
 
 	@Override
-	public int getTotalBoardNUm() {
+	public int getTotalBoardNum() {
 		int totalBoardNum = boardDao.count();
 		return totalBoardNum;
 	}

@@ -12,5 +12,5 @@ public interface Ch13BoardService {
 	public List<Ch13Board> getList(Ch13Pager pager);
 	public Ch13Board getBoard(int bno);
 	public void addHitcount(int bno);
-	public int getTotalBoardNUm();
+	public int getTotalBoardNum();
 }

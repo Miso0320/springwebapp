@@ -274,7 +274,7 @@
 	               <img src="${pageContext.request.contextPath}/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top">
 	               	전자정부 프레임워크(Spring Framework)
 	            </a>
-	            <div>
+	            <%-- <div>
 	               <div>
 						<c:if test="${login == null}">
 							<a href="${pageContext.request.contextPath}/ch08/content" class="btn btn-success btn-sm">로그인</a>
@@ -284,6 +284,19 @@
 							현재 ${login.mid} 로그인 됨
 							<img src="${pageContext.request.contextPath}/resources/images/face/${login.mid}.png" width="30" height="30">
 							<a href="${pageContext.request.contextPath}/ch08/logout" class="btn btn-warning btn-sm mt-2">로그아웃</a>
+						</c:if>
+	               </div>
+	            </div> --%>
+	            
+	            <!-- Ch13 -->
+	            <div>
+	               <div>
+						<c:if test="${ch13Login == null}">
+							<a href="${pageContext.request.contextPath}/ch13/login" class="btn btn-success btn-sm">로그인</a>
+						</c:if>
+	              
+	              		<c:if test="${ch13Login != null}">
+							<a href="${pageContext.request.contextPath}/ch13/logout" class="btn btn-warning btn-sm mt-2">로그아웃</a>
 						</c:if>
 	               </div>
 	            </div>
