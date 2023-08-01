@@ -17,7 +17,6 @@ public class Ch13MemberServiceImpl implements Ch13MemberService{
 	@Resource
 	private Ch13MemberDao memberDao;
 	
-	
 	@Override
 	public JoinResult join(Ch13Member member) {
 		Ch13Member dbMember = memberDao.selectByMid(member.getMid());

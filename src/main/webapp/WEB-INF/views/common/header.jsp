@@ -473,6 +473,82 @@
 			  -moz-transform: rotateX(-90deg);
 			  transform: rotateX(-90deg);
 			}
+			
+			/* 버튼14 */
+			.btn-14 {
+			  background: rgb(255,151,0);
+			  border: none;
+			  z-index: 1;
+			}
+			.btn-14:after {
+			  position: absolute;
+			  content: "";
+			  width: 100%;
+			  height: 0;
+			  top: 0;
+			  left: 0;
+			  z-index: -1;
+			  border-radius: 5px;
+			  background-color: #eaf818;
+			  background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+			   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5);
+			   7px 7px 20px 0px rgba(0,0,0,.1),
+			   4px 4px 5px 0px rgba(0,0,0,.1);
+			  transition: all 0.3s ease;
+			}
+			.btn-14:hover {
+			  color: #000;
+			}
+			.btn-14:hover:after {
+			  top: auto;
+			  bottom: 0;
+			  height: 100%;
+			}
+			.btn-14:active {
+			  top: 2px;
+			}
+			
+			/* 푸쉬 버튼 */
+			.container {
+			  padding-top: 1em;
+			  margin-top: 1em;
+			  border-top: 
+			    solid
+			    1px
+			    #CCC;
+			}
+			
+			.button77 {
+			  display: block;
+			  position: relative;
+			  float: left;
+			  width: 120px;
+			  padding: 0;
+			  margin: 10px 20px 10px 0;
+			  font-weight: 600;
+			  text-align: center;
+			  line-height: 50px;
+			  color: #FFF;
+			  border-radius: 5px;
+			  transition: all 0.2s ;
+			}
+			
+			.btnLightBlue {
+			  background: #5DC8CD;
+			}
+			
+			.btnLightBlue.btnPush {
+			  box-shadow: 0px 5px 0px 0px #1E8185;
+			}
+			
+			.btnPush:hover {
+			  margin-top: 15px;
+			  margin-bottom: 5px;
+			}
+			
+			.btnLightBlue.btnPush:hover {
+			  box-shadow: 0px 0px 0px 0px #1E8185;
+			}
 		</style>
 	
 	</head>
