@@ -14,6 +14,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 		<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		
 		<style type="text/css">
 			/* C11 form */
 			.btn-hover {
@@ -259,6 +260,46 @@
 			  }
 			}
 			
+			/* 색깔 막 바뀌는 버튼 */
+			.color-bg-start {
+			  background-color: salmon;
+			}
+			.bg-animate-color {
+			  animation: random-bg .5s linear infinite;
+			}
+			@keyframes random-bg {
+			  from {
+			    filter: hue-rotate(0);
+			  }
+			  to {
+			    filter: hue-rotate(360deg);
+			  }
+			}
+			.fun-btn {
+			  background-color: salmon;
+			  color: white;
+			  border: none;
+			  transition: all .3s ease;
+			  border-radius: 5px;
+			  text-transform: uppercase;
+			  outline: none;
+			  align-self: center;
+			  cursor: pointer;
+			  font-weight: bold;
+			}
+			.logbtn {
+			   animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
+			}
+			.fun-btn:hover {
+			   animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
+			}
+			.start-fun {
+			  background-color: #fff !important;
+			  /* change color of button text when fun is started   */
+			  color: salmon !important;
+			}
+						
+			
 		</style>
 	
 	</head>
@@ -292,11 +333,11 @@
 	            <div>
 	               <div>
 						<c:if test="${ch13Login == null}">
-							<a href="${pageContext.request.contextPath}/ch13/login" class="btn btn-success btn-sm">로그인</a>
+							<a href="${pageContext.request.contextPath}/ch13/login" class="btn btn-sm fun-btn logbtn">로그인</a>
 						</c:if>
 	              
 	              		<c:if test="${ch13Login != null}">
-							<a href="${pageContext.request.contextPath}/ch13/logout" class="btn btn-warning btn-sm mt-2">로그아웃</a>
+							<a href="${pageContext.request.contextPath}/ch13/logout" class="btn btn-sm fun-btn logbtn">로그아웃</a>
 						</c:if>
 	               </div>
 	            </div>

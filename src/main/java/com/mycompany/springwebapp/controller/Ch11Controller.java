@@ -146,16 +146,8 @@ public class Ch11Controller {
 		return "redirect:/ch11/content";
 	}
 	
-	// form의 기본값을 세팅하는 용도
 	@GetMapping("/form5")
-	public String form5(@ModelAttribute("member") Ch11Member member) {
+	public String form5() {
 		return "ch11/form5";
-	}
-	
-	// form의 값을 받아올 때 사용하는 용도
-	@PostMapping("/form5")
-	public String handleForm5(@ModelAttribute("member") Ch11Member member) {
-		log.info(member.toString());
-		return "redirect:/ch11/content";
 	}
 }
